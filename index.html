@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شركة المنارة للتوصيل</title>
+
+  <!-- إضافة رابط Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* تنسيق الخلفية */
+    body {
+      background-color: #1E3A5F; /* اللون الأزرق الغامق */
+      color: white;
+      margin-top: 100px;
+    }
+
+    /* الشريط العلوي */
+    .navigation ul {
+      display: flex;
+      justify-content: space-around;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      background-color: #00509E; /* لون الشريط العلوي */
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .navigation a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .navigation a:hover {
+      background-color: #007bff; /* التفاعل مع الروابط */
+    }
+
+    /* قسم نبذة عن الشركة */
+    #about {
+      background-color: #003366; /* اللون الأزرق الغامق */
+      text-align: center;
+      padding: 40px;
+      margin-top: 80px;
+      height: 300px;
+    }
+
+    .logo {
+      font-size: 3rem;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .about-text {
+      font-size: 1.5rem;
+      margin-top: 20px;
+    }
+
+    /* قسم الصورة */
+    #image-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0077cc;
+      padding: 40px;
+      margin: 50px 0;
+    }
+
+    .image-container {
+      width: 50%;
+    }
+
+    .image-container img {
+      width: 100%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.1);
+    }
+
+    .image-text {
+      width: 50%;
+      font-size: 3rem; /* تم تعديل الحجم ليكون مماثلاً لحجم العنوان */
+      color: #003366; /* تم تعديل اللون ليكون مطابقًا للون خلفية القسم الأول */
+      text-align: right; /* تم تعديل المحاذاة إلى اليمين */
+      margin-right: 30px; /* إضافة هامش ليكون النص بعيدًا عن الصورة */
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      font-weight: bold; /* جعل النص بالخط العريض */
+    }
+
+    .image-text:hover {
+      transform: scale(1.1);
+    }
+
+    /* قسم الخدمات */
+    #services {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 50px 0;
+      background-color: #0077cc;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .service {
+      background-color: #006bb3;
+      padding: 15px 25px;
+      border-radius: 50%;
+      text-align: center;
+      color: white;
+      margin: 10px 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      width: 80%;
+    }
+
+    /* قسم السيارة والنصوص */
+    #features {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 50px 0;
+      background-color: #004080;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .delivery-car {
+      width: 25%;
+      animation: moveCar 3s linear infinite;
+    }
+
+    .delivery-car img {
+      width: 100%;
+    }
+
+    .company-info {
+      width: 60%;
+      color: white;
+      text-align: right;
+      margin-right: 20px;
+    }
+
+    .company-info p {
+      margin: 10px 0;
+    }
+
+    @keyframes moveCar {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* أقسام أخرى */
+    section {
+      margin-bottom: 50px;
+      text-align: center;
+      border-radius: 10px;
+      padding: 30px;
+    }
+
+    /* قسم الفروع والأسئلة */
+    #branche, #faq, #contact1 {
+      background-color: #003366;
+      width: 80%;
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+
+    /* تنسيق الأزرار في القسم الأخير */
+    button {
+      background-color: #008CBA;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005f73;
+    }
+
+    /* إضافة تأثير الانزلاق */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeIn 1s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* تنسيق النصوص مع الصور */
+    .about-text, .service, .company-info p {
+      cursor: pointer;
+    }
+
+    .about-text:hover, .service:hover, .company-info p:hover {
+      transition: transform 0.3s ease;
+      transform: scale(1.1);
+    }
+
+    /* تكبير حجم النص في القسم الثالث */
+    #features .company-info p {
+      font-size: 1.5rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- الشريط العلوي -->
+  <header>
+    <div class="header-content">
+      <div class="navigation">
+        <ul>
+          <li><a href="About.HTML">نبذة عن الشركة</a></li>
+          <li><a href="serv.HTML">خدماتنا</a></li>
+          <li><a href="branche.HTML">فروعنا</a></li>
+          <li><a href="MONe.HTML">الأسعار</a></li>
+          <li><a href="faqq.HTML">الأسئلة الشائعة</a></li>
+          <li><a href="contact1.HTML">تواصل معنا</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- نبذة عن الشركة -->
+  <section id="about" class="fade-in">
+    <div class="logo">المنارة للتوصيل</div>
+    <div class="about-text">
+      <p>نحن شركة المنارة للتوصيل، نقدم خدمات التوصيل السريعة والآمنة لجميع عملائنا</p>
+      <p>تم تأسيس الشركة عام 2020 وقد حققت نجاح عظيم</p>
+    </div>
+  </section>
+
+  <!-- قسم الصورة -->
+  <section id="image-section" class="fade-in">
+    <div class="image-container">
+      <img src="gi.jpg" alt="شركة المنارة للتوصيل">
+    </div>
+    <div class="image-text">
+      <p>المنارة هي خياركم الأفضل</p>
+    </div>
+  </section>
+
+  <!-- قسم الخدمات -->
+  <section id="services">
+    <div class="service fade-in">
+      <p>خدمة توصيل سريعة</p>
+    </div>
+    <div class="service fade-in">
+      <p>تأمين جميع الطلبات</p>
+    </div>
+    <div class="service fade-in">
+      <p>خدمة العملاء على مدار الساعة</p>
+    </div>
+  </section>
+
+  <!-- قسم السيارة والنصوص -->
+  <section id="features">
+    <div class="delivery-car">
+      <img src="car.jpg" alt="سيارة توصيل">
+    </div>
+    <div class="company-info fade-in">
+      <p>توصيل سريع وآمن</p>
+      <p>استلام الطلبات يومياً</p>
+      <p>تأمين البضائع أثناء النقل</p>
+    </div>
+  </section>
+
+  <!-- قسم الفروع والأسئلة -->
+  <section id="branche" class="fade-in">
+    <h2>فروعنا</h2>
+    <button onclick="window.location.href='branche.HTML'">عرض المزيد</button>
+  </section>
+
+  <section id="faq" class="fade-in">
+    <h2>لديك سؤال؟</h2>
+    <button onclick="window.location.href='contact1.HTML'">تواصل معنا</button>
+  </section>
+
+  <!-- قسم التواصل -->
+  <section id="contact1" class="fade-in">
+    <h2>تواصل معنا</h2>
+    <button onclick="window.location.href='contact1.HTML'">تواصل معنا الآن</button>
+  </section>
+
+  <!-- إضافة رابط لBootstrap JS و Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
